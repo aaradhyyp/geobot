@@ -1,0 +1,11 @@
+# Environments
+.env
+venv/
+__pycache__/
+
+# Node/React
+node_modules/
+dist/
+
+# Database
+chroma_db/
