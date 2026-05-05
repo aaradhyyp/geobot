@@ -1,5 +1,8 @@
-uvicorn
 fastapi
-apscheduler
-dotenv
+uvicorn
 requests
+apscheduler
+google-generativeai
+chromadb
+python-dotenv
+pydantic
