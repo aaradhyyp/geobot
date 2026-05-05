@@ -2,3 +2,4 @@ uvicorn
 fastapi
 apscheduler
 dotenv
+requests
