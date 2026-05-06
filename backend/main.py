@@ -35,7 +35,7 @@ app = FastAPI(title="GeoBot API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Ise Vercel live hone ke baad wapas restrict kar dena
+    allow_origins=["geobot-iykcrqehk-aaradhyyps-projects.vercel.app"], # Ise Vercel live hone ke baad wapas restrict kar dena
     allow_methods=["*"],
     allow_headers=["*"],
 )
