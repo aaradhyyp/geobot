@@ -16,18 +16,20 @@ scheduler = BackgroundScheduler()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
-    try:
-        update_news()
-    except Exception as e:
-        print(f"Initial news update failed: {e}")
-    scheduler.add_job(update_news, "interval", hours=6, id="news_refresh")
+    # 1. Start the scheduler FIRST
     scheduler.start()
-    print("📅 Scheduler started — news refresh every 6h")
+    
+    # 2. Schedule the regular 6-hour refresh
+    scheduler.add_job(update_news, "interval", hours=6, id="news_refresh")
+    
+    # 3. THE MAGIC TRICK: Add a one-time job that runs immediately in the background
+    # This prevents the server from freezing during boot-up!
+    scheduler.add_job(update_news, "date", id="initial_boot_fetch")
+    
+    print("📅 Server is LIVE! Scheduler started — news is fetching in the background.")
     yield
     # Shutdown
     scheduler.shutdown()
-
 
 app = FastAPI(title="GeoBot API", lifespan=lifespan)
 
