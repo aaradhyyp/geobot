@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://geobot-2.onrender.com",
+  baseURL: "https://geobot-1.onrender.com",
   timeout: 60000,
 });
 
