@@ -35,7 +35,10 @@ app = FastAPI(title="GeoBot API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["geobot-iykcrqehk-aaradhyyps-projects.vercel.app"], # Ise Vercel live hone ke baad wapas restrict kar dena
+    allow_origins=[
+        "https://geobot-snowy.vercel.app",  # Aapki live website ka domain
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
